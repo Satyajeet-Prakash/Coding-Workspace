@@ -1,0 +1,63 @@
+package Matrix;
+
+import java.io.*;
+import java.util.*;
+
+public class Traversal extends matrix
+{
+	public static String spiral_traversal(int [][]mat)
+	{
+		int row = mat.length, col = mat[0].length;
+		
+		int m = row, n = col;
+		int r = 0, c = 0, count = 0;
+		StringBuffer sb = new StringBuffer();
+		
+		while(count < row*col) 
+		{
+			for(int i = c; i < n; i++) {
+				sb.append(mat[r][i] + "  ");
+				count++;
+			}
+			r++;
+			for(int i = r; i < m; i++) {
+				sb.append(mat[i][n-1] + "  ");
+				count++;
+			}
+			n--;
+			if(r < m) {
+				for(int i = n-1; i >=c; i--) {
+					sb.append(mat[m-1][i] + "  ");
+					count++;
+				}
+				m--;
+			}
+			if(c < n) {
+				for(int i = m-1; i >= r; i--) {
+					sb.append(mat[i][c] + "  ");
+					count++;
+				}
+				c++;
+			}	
+		}
+		return sb.toString();
+	}
+	
+	public static int Maximum_difference(int[][] mat)
+	{
+		int R = mat.length, C = mat[0].length;
+		
+		int max = Integer.MIN_VALUE;
+		int min = Integer.MAX_VALUE;
+		
+		for(int i = 0; i < R; i++){
+			for(int j = 0; j< C; j++) 
+			{
+				if(mat[i][j] > max)
+					max = mat[i][j];
+				else if(mat[i][j] < min)
+					min = mat[i][j];
+			}
+		}
+	}
+}

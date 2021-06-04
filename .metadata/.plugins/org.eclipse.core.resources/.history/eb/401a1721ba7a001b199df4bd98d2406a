@@ -1,0 +1,29 @@
+package Array;
+
+import java.io.*;
+import java.util.*;
+
+import Array.Max_Min.Pair;
+
+public class array
+{
+	public static void Print_Array(int[] arr, int n)
+	{
+		System.out.print("\n\nArray: ");
+		
+		for(int i = 0; i < n; i++) {
+			System.out.print(arr[i] + ", ");
+		}
+	}
+	
+	public static void main(String[] args) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int[] arr = {6 , 7, 8, 9, 10, 11, 12};
+		
+		Sorting_or_Moving_Array.rotate_array_by_one(arr);
+		Print_Array(arr, arr.length);
+	}
+
+}

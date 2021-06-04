@@ -1,0 +1,50 @@
+package Matrix;
+
+
+import java.io.*;
+import java.util.*;
+
+public class Traversal extends matrix
+{
+	public static String spiral_traversal(int [][]mat)
+	{
+		int row = mat.length, col = mat[0].length;
+		
+		int m = row, n = col;
+		int r = 0, c = 0, count = 0;
+		StringBuffer sb = new StringBuffer();
+		
+		while(count < row*col) 
+		{
+			for(int i = c; i < n; i++) {
+				sb.append(mat[r][i]);
+				System.out.println(sb);
+				count++;
+			}
+			r++;
+			for(int i = row; i < m; i++) {
+				sb.append(mat[i][n-1]);
+				System.out.println(sb);
+				count++;
+			}
+			n--;
+			if(r < m) {
+				for(int i = n-1; i >=c; i--) {
+					sb.append(mat[m-1][i]);
+					System.out.println(sb);
+					count++;
+				}
+				m--;
+			}
+			if(c < n) {
+				for(int i = m-1; i >= r; i--) {
+					sb.append(mat[i][c]);
+					System.out.println(sb);
+					count++;
+				}
+				c++;
+			}	
+		}
+		return sb.toString();
+	}
+}

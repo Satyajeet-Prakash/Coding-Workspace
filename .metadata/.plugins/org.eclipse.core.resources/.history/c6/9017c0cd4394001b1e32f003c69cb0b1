@@ -1,0 +1,23 @@
+package Matrix;
+
+import java.io.*;
+import java.util.*; 
+
+public class basic extends matrix
+{
+	public static int[][] transpose(int [][]mat)
+	{
+		int row = mat.length;
+		int col = mat[0].length;
+		
+		for(int i = 0; i < row; i++) {
+			for(int j = i; j < col; j++) {
+				int temp = mat[i][j];
+				mat[i][j] = mat[j][i];
+				mat[j][i] = temp;
+			}
+		}
+		matrix.Print_Matrix(mat);
+		return mat;
+	}
+}

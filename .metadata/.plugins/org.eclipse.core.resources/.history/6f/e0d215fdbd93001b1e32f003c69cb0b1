@@ -1,0 +1,51 @@
+package Matrix;
+
+import java.io.*;
+import java.util.*;
+
+public class Rotate_Matrix extends matrix
+{
+	public static void rotate_clockwise(int[][] matrix, int no_of_times)
+	{ 
+		int temp1 = matrix[0][0], i = 0, j = 0;
+		int temp2 = 0;
+		
+		while(no_of_times > 0)
+		{
+			for(j = 1; j < matrix[0].length; j++) {
+				temp2 = matrix[i][j];
+				matrix[i][j] = temp1;
+				temp1 = temp2;
+			}
+			j--;
+			for(i = 1; i < matrix.length; i++) {
+				temp2 = matrix[i][j];
+				matrix[i][j] = temp1;
+				temp1 = temp2;
+			}
+			i--;
+			for(j=j-1; j>=0; j--) {
+				temp2 = matrix[i][j];
+				matrix[i][j] = temp1;
+				temp1 = temp2;
+			}
+			j++;
+			for(i = i-1; i>=0; i--) {
+				temp2 = matrix[i][j];
+				matrix[i][j] = temp1;
+				temp1 = temp2;
+			}
+			i++;
+			no_of_times--;
+		}
+		
+		for(int r = 0; r < matrix.length; r++)
+		{
+			for(int c = 0; c < matrix[0].length;c++)
+			{
+				System.out.print(matrix[i][j] + "  ");
+			}
+			System.out.println();
+		}
+	}
+}

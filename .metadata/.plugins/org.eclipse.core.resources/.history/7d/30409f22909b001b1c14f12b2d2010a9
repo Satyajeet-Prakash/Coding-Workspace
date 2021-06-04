@@ -1,0 +1,84 @@
+package Stack;
+
+import java.util.*;
+
+public class Concept_1_Nearest_Element {
+	
+	public static int[] Nearest_Smallest_Right(int[] arr, int n)
+	{
+		int[] out = new int[n];
+		
+		out[n-1] = -1;
+		for(int i = 0; i < n-1; i++)
+		{
+			for(int j = i+1; j < n; j++)
+			{
+				if(arr[j] < arr[i]) {
+					out[i] = arr[j];
+					break;
+				}
+				else
+					out[i] = -1;
+			}
+		}
+		return out;
+	}
+	
+	public static int[] Nearest_Greatest_Left(int[] arr, int n)
+	{
+		int[] out = new int[n];
+		Stack<Integer>  stack = new Stack<>();
+		
+		for(int i = 0; i < n; i++)
+		{	
+			while(!stack.isEmpty() && stack.peek() <= arr[i])
+				stack.pop();
+			
+			if(stack.isEmpty())
+				out[i] = -1;
+			else
+				out[i] = stack.peek();
+			
+			stack.push(arr[i]);
+		}
+		return out;
+	}
+	
+	public static int[] Nearest_Greatest_Right(int[] arr, int n)
+	{
+		int[] out = new int[n];
+		Stack<Integer> stack = new Stack<>();
+		
+		for(int i = n-1; i >= 0; i--)
+		{
+			while(!stack.isEmpty() && stack.peek() <= arr[i])
+					stack.pop();
+			
+			if(stack.isEmpty()) 
+				output[i] = -1;
+			else 
+				output[i] = stack.peek();
+			
+			stack.push(arr[i]);
+		}
+		return output;
+	}
+	
+	public static void Print(int[] arr)
+	{
+		System.out.print("\n\nArray: ");
+		for(int i = 0; i < arr.length; i++)
+			System.out.print(arr[i] + "  ");
+	}
+
+	public static void main(String[] args) 
+	{
+		
+		int[] arr = {4, 3, 2, 5};
+		
+		Print(arr);
+		int [] output1 = Nearest_Smallest_Right(arr, arr.length);
+		Print(output1);
+	}
+
+}
